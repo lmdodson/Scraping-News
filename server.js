@@ -23,7 +23,7 @@ app.engine(
     defaultLayout: "main"
   })
 );
-app.set("view engine", "hbs");
+app.set("view engine", "handlebars");
 
 
 //! Middleware
@@ -41,13 +41,11 @@ app.use(express.static("public"));
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 mongoose.connect(MONGODB_URI);
 
+module.exports = app;
+
 //! Routes
 // require("./controllers/controllers")(app);
 // require("./controllers/scraper")(app);
-
-module.exports = app;
-
-
 
 // A GET route for scraping the Onion website
 app.get("/scrape", function(req, res) {
@@ -84,26 +82,16 @@ app.get("/scrape", function(req, res) {
         });
     });
 
-    // Route for getting all Articles from the db
-app.get("/articles", function(req, res) {
-  // Grab every document in the Articles collection
-  db.Article.find({})
-    .then(function(dbArticle) {
-      // If we were able to successfully find Articles, send them back to the client
-      res.json(dbArticle);
-    })
-    .catch(function(err) {
-      // If an error occurred, send it to the client
-      res.json(err);
-    });
-});
-
-
+    
     // Send a message to the client
     res.send("Scrape Complete");
   });
 });
 
+app.get("/", function(req, res){
+
+      res.render("index");
+});
 
 // Start the server
 app.listen(PORT, function() {
