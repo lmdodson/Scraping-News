@@ -31,6 +31,19 @@ module.exports = function (app) {
   });
 
 
-
+  app.get("/saved", function(req, res) {
+    db.Article.find({"saved": true}, function(error, data) {
+    // Throw any errors to the console
+      if (error) {
+      console.log(error);
+      } else{
+        var savedObject = {
+        news: data,
+        };
+      console.log(savedObject);
+      res.render("index", savedObject);
+      };
+    });
+  });
 
 };
