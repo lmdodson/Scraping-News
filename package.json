@@ -1,29 +1,30 @@
 {
-  "name": "scraping-news",
+  "name": "Mongo-Scraper",
   "version": "1.0.0",
-  "description": "",
+  "description": "Homework for Module #18",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lmdodson/Scraping-News.git"
+    "url": "git+https://github.com/mollyclaire/Mongo-Scraper.git"
   },
-  "author": "Leah Dodson",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/lmdodson/Scraping-News/issues"
+    "url": "https://github.com/mollyclaire/Mongo-Scraper/issues"
   },
-  "homepage": "https://github.com/lmdodson/Scraping-News#readme",
+  "homepage": "https://github.com/mollyclaire/Mongo-Scraper#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.19.0",
     "cheerio": "^1.0.0-rc.3",
     "express": "^4.17.1",
-    "express-handlebars": "^4.0.3",
-    "mongoose": "^5.9.7",
-    "morgan": "^1.10.0",
-    "path": "^0.12.7"
+    "express-handlebars": "^3.1.0",
+    "mongojs": "^2.6.0",
+    "mongoose": "^5.6.6",
+    "morgan": "^1.9.1"
   },
   "devDependencies": {
     "handlebars": "^4.5.0"
