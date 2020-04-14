@@ -69,6 +69,29 @@ module.exports = function (app) {
       });
   });
 
-  
+  // route to clear db collection documents
+  app.post("/clear", function (req, res) {
+    db.Article.deleteMany({"saved": true})
+    .then(function() {
+      res.render("index")
+    });
+  });
 
+  // route to remove article from saved
+  app.post("/delete/:id", function(req, res) {
+    // Update an Article to reflect saved status
+    db.Article.findOneAndUpdate(
+      // find the Article Id
+      {"_id": req.params.id}, 
+      // set object property to false
+      {"$set": {"saved": false}})
+    .then(function(result) {
+        console.log("here")
+        res.json(result);
+        // catch all errors
+    }).catch(function(err){ 
+      res.json(err) 
+    });
+  });
+  
 };

@@ -1,4 +1,5 @@
 $(function(){
+    //! main page functionality
     // scrape button function
     $(".scrape-new").click( function() {
         $.ajax({
@@ -16,7 +17,7 @@ $(function(){
             method: "POST",
             url: "/clear",
         }).then(function() {
-            console.log(cleared)
+            console.log("cleared")
             window.location = "/"
         });
     });
@@ -42,6 +43,20 @@ $(function(){
     // return home button
     $(".home").click(function() {
         window.location = "/"
+    });
+
+    //! saved page functionality
+    // delete from saved
+    $(".delete").click(function() {
+        var articleId = $(this).attr("data-id")
+        console.log(articleId);
+            $.ajax({
+                type: "POST",
+                url: "/delete/" + articleId,
+            }).then(function(response) {
+                console.log(JSON.stringify(response));
+                window.location = "/saved"
+            });
     });
 
 });

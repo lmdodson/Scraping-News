@@ -41,7 +41,7 @@ module.exports = function (app) {
         news: data,
         };
       console.log(savedObject);
-      res.render("index", savedObject);
+      res.render("saved", savedObject);
       };
     });
   });
