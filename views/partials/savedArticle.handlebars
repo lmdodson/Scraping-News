@@ -6,9 +6,37 @@
                 <p class="card-text">{{summary}}</p>
                 <a href={{link}} target="_blank" class="card-link">{{link}}</a><br>
                 <button type="button" class="btn btn-dark delete" data-id={{_id}}>Delete From Saved</button>
-                <button type="button" class="btn btn-dark notes" data-id={{_id}}>View Notes</button>
+                <button type="button" class="btn btn-dark comments" data-toggle="modal" data-target="#commentModal" data-id={{_id}}>View Comments</button>
 
             </div>
         </div>
     </div>
+</div>
+
+<!-- Notes Modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Comments for Article: {{_id}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <ul class="list-group comment-container">
+          </ul>
+        <div class="comment-area">
+        <textarea class="comment-title" placeholder="Add Comment Title" rows="1" cols="60" spellcheck="false"></textarea>
+        <textarea class="comment-input" placeholder="Add Comment" rows="4" cols="60" spellcheck="false"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary save-comment" data-id={{_id}}>Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>

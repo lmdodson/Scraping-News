@@ -13,3 +13,22 @@ background: url(../images/black_paper.png)
 .jumbotron {
     background: url(../images/linedpaper.png);
 }
+
+.note-delete {
+    float: right;
+    margin: .5em;
+}
+
+.comment {
+    display: inline;
+}
+
+.comment-container {
+    margin: .5em;
+    list-style-type: none;
+}
+
+.comment-item {
+    border: dashed black;
+
+}

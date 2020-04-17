@@ -48,39 +48,6 @@ module.exports = app;
 require("./controllers/htmlRoutes")(app);
 require("./controllers/apiRoutes")(app);
 
-// // route to display saved articles
-// app.get("/saved", function(req, res){
-//   db.Article.find({
-//     "saved":true
-//   }).then(function(result){
-//     var hbsSaved = {
-//       articles: result
-//     }
-//     res.render()
-//   }).catch(function(err) { res.json(err) });
-// });
-
-// // route to clear all articles
-
-
-// // route to clear an article by id
-// app.post("/clear:id",function(req, res) {
-//   db.Article.findByIdAndRemove({
-//     "_id": req.params.id
-//   }).then(function(result){
-//     console.log("entry removed")
-//   });
-// });
-
-// // route to save an article by id
-
-// // route to save a comment on an article
-// app.post("/submit", function(req, res) {
-//   db.Comment.create(req.body)
-//   .then(function(dbComment){
-//     return db.Article.findOneAndUpdate({}, { $push: { comments: dbComment._id}}, { new: true});
-//   })
-// })
 
 //! Start the server
 app.listen(PORT, function() {

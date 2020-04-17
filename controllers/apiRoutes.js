@@ -1,14 +1,11 @@
 //! Dependencies
-var express = require("express");
-var exphbs = require("express-handlebars")
-var mongoose = require("mongoose");
 var axios = require("axios");
 var cheerio = require("cheerio");
-var path = require("path")
 
 //! Models
 const db = require("../models");
 
+//! Routes
 module.exports = function (app) { 
 
     // Route to scrape the Onion website
@@ -71,7 +68,7 @@ module.exports = function (app) {
 
   // route to clear db collection documents
   app.post("/clear", function (req, res) {
-    db.Article.deleteMany({"saved": true})
+    db.Article.deleteMany({"saved": false})
     .then(function() {
       res.render("index")
     });
@@ -92,6 +89,36 @@ module.exports = function (app) {
     }).catch(function(err){ 
       res.json(err) 
     });
+  });
+
+  // route to save a comment 
+  app.post("/articles/:id", function(req, res) {
+    db.Comment.create(req.body)
+    .then(function(dbComment) {
+      return db.Article.findOneAndUpdate(
+        { _id: req.params.id},
+        { comment: dbComment._id},
+        { new: true}
+        )
+    })
+    .then(function(dbArticle) {
+      res.json(dbArticle)
+    })
+    .catch(function(err) {
+      res.json(err)
+    });
+  });
+
+  // route to populate a comment into an article by id
+  app.get("/articles/:id", function(req, res) {
+    db.Article.findOne({_id: req.params.id})
+    .populate("comment")
+    .then(function(dbArticle) {
+      res.json(dbArticle);
+    })
+    .catch(function(err) {
+      res.json(err);
+    }) ;
   });
   
 };
