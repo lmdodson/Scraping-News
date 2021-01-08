@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/lmdodson/Scraping-News/issues"
   },
-  "homepage": "https://github.com/lmdodson/Scraping-News",
+  "homepage": "https://lmdodson.github.io/Scraping-News/",
   "dependencies": {
     "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.3",
