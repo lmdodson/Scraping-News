@@ -27,7 +27,7 @@ module.exports = function (app) {
       console.log(hbsObject);
       res.render("index", hbsObject);
       };
-    });
+    }).lean();
   });
 
 
@@ -43,7 +43,7 @@ module.exports = function (app) {
       console.log(savedObject);
       res.render("saved", savedObject);
       };
-    });
+    }).lean();
   });
 
 };
